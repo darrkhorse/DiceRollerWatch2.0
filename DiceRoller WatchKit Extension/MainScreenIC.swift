@@ -12,7 +12,7 @@ import Foundation
 
 class MainScreenIC: WKInterfaceController
 {
-
+    
     @IBOutlet var theTable: WKInterfaceTable!
     
     @IBOutlet var theModeLabel: WKInterfaceLabel!
@@ -21,7 +21,7 @@ class MainScreenIC: WKInterfaceController
     let rollAlert = WKAlertAction(title: "Ok", style: WKAlertActionStyle.Cancel, handler: { () -> Void in })
     let deleteAlertCancel = WKAlertAction(title: "Cancel", style: WKAlertActionStyle.Cancel, handler: { () -> Void in print("Canceled Delete")})
     let deleteAlertConfirm = WKAlertAction(title: "Confirm", style: WKAlertActionStyle.Cancel, handler: { () -> Void in
-    
+        
         //Delete the current row from theRolls
         //DiceRollerCore.theRolls.removeAtIndex(???)
         //updateUserDefaults()
@@ -45,7 +45,7 @@ class MainScreenIC: WKInterfaceController
             self.generateTable()
         }
     }
-
+    
     //Context Menu Actions
     func updateModeLabel()
     {
@@ -81,7 +81,7 @@ class MainScreenIC: WKInterfaceController
             currRow.sidesLabel.setText("D\(DiceRollerCore.theRolls[i].numSides)")
             currRow.nameLabel.setText("Name: \(DiceRollerCore.theRolls[i].name)")
         }
-
+        
     }
     
     override func table(table: WKInterfaceTable, didSelectRowAtIndex rowIndex: Int)
@@ -89,7 +89,7 @@ class MainScreenIC: WKInterfaceController
         if(currMode == "Roll")
         {
             self.presentAlertControllerWithTitle("The Roll", message: DiceRollerCore.theRolls[rowIndex].roll(), preferredStyle: WKAlertControllerStyle.Alert, actions: [rollAlert])
-
+            
         }
         else if(currMode == "Edit")
         {
@@ -100,7 +100,7 @@ class MainScreenIC: WKInterfaceController
                 //["attack"] : [AnyObject]?
                 
                 DiceRollerCore.theRolls[selection].name = vals![0] as! String
-               
+                
                 
                 self.updateUserDefaults()
                 self.generateTable()
@@ -143,10 +143,10 @@ class MainScreenIC: WKInterfaceController
             self.generateTable()
         }
     }
-
+    
     override func didDeactivate() {
         // This method is called when watch view controller is no longer visible
         super.didDeactivate()
     }
-
+    
 }
