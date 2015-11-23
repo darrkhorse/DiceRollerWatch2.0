@@ -8,22 +8,27 @@
 
 import WatchKit
 import Foundation
+import WatchConnectivity
 
-
-class MainScreenIC: WKInterfaceController
+class MainScreenIC: WKInterfaceController, WCSessionDelegate
 {
+    var session : WCSession!
+    
+    var count = 1
     
     @IBOutlet var theTable: WKInterfaceTable!
     
     @IBOutlet var theModeLabel: WKInterfaceLabel!
     
     var currMode = "Roll"
+    static var currSelectedIndex = -1
     let rollAlert = WKAlertAction(title: "Ok", style: WKAlertActionStyle.Cancel, handler: { () -> Void in })
     let deleteAlertCancel = WKAlertAction(title: "Cancel", style: WKAlertActionStyle.Cancel, handler: { () -> Void in print("Canceled Delete")})
+    
     let deleteAlertConfirm = WKAlertAction(title: "Confirm", style: WKAlertActionStyle.Cancel, handler: { () -> Void in
         
         //Delete the current row from theRolls
-        //DiceRollerCore.theRolls.removeAtIndex(???)
+        DiceRollerCore.theRolls.removeAtIndex(MainScreenIC.currSelectedIndex)
         //updateUserDefaults()
         //generateTable()
     })
@@ -31,6 +36,14 @@ class MainScreenIC: WKInterfaceController
     override func awakeWithContext(context: AnyObject?)
     {
         super.awakeWithContext(context)
+        
+        
+        if WCSession.isSupported() {
+            self.session = WCSession.defaultSession()
+            session.delegate = self
+            session.activateSession()
+        }
+        
         
         let prefs = NSUserDefaults.standardUserDefaults()
         let theDiceStrings = prefs.valueForKey("theDiceStrings");
@@ -86,26 +99,19 @@ class MainScreenIC: WKInterfaceController
     
     override func table(table: WKInterfaceTable, didSelectRowAtIndex rowIndex: Int)
     {
+        MainScreenIC.currSelectedIndex = rowIndex
+        
         if(currMode == "Roll")
         {
-            self.presentAlertControllerWithTitle("The Roll", message: DiceRollerCore.theRolls[rowIndex].roll(), preferredStyle: WKAlertControllerStyle.Alert, actions: [rollAlert])
+            let  rollString = DiceRollerCore.theRolls[rowIndex].roll()
+            self.presentAlertControllerWithTitle("The Roll", message: rollString, preferredStyle: WKAlertControllerStyle.Alert, actions: [rollAlert])
+            
+            session.sendMessage(["aRoll": rollString], replyHandler: nil, errorHandler: nil)
             
         }
         else if(currMode == "Edit")
         {
-            var selection: Int
-            selection = rowIndex
-            let suggestions = ["attack","initiative","damage"]
-            self.presentTextInputControllerWithSuggestions(suggestions, allowedInputMode: WKTextInputMode.Plain) { (vals) -> Void in
-                //["attack"] : [AnyObject]?
-                
-                DiceRollerCore.theRolls[selection].name = vals![0] as! String
-                
-                
-                self.updateUserDefaults()
-                self.generateTable()
-                self.popToRootController()
-            }
+            self.presentAlertControllerWithTitle("The Roll", message: "Edit", preferredStyle: WKAlertControllerStyle.Alert, actions: [rollAlert])
         }
         else if(currMode == "Delete")
         {
@@ -136,17 +142,40 @@ class MainScreenIC: WKInterfaceController
             DiceRollerCore.theRolls.append(Roll(qty: DiceRollerCore.numDice, numSides: DiceRollerCore.numSides, name: DiceRollerCore.currName))
             DiceRollerCore.resetValues()
             
-            //update the user defaults
-            self.updateUserDefaults()
-            
-            //we need to rebuild our table
-            self.generateTable()
         }
+        //update the user defaults
+        self.updateUserDefaults()
+        
+        //we need to rebuild our table
+        self.generateTable()
+        
     }
     
     override func didDeactivate() {
         // This method is called when watch view controller is no longer visible
         super.didDeactivate()
+    }
+    
+    override func contextForSegueWithIdentifier(segueIdentifier: String) -> AnyObject?
+    {
+        print("In segue")
+        //let applicationData = ["counterValue":"5", "blah":"7"]
+        
+        /*
+        session.sendMessage(applicationData, replyHandler: {(theReply: [String : AnyObject]) -> Void in
+        print("received reply on watch")
+        }, errorHandler: {(error ) -> Void in
+        print("Problem sending: \(error)")
+        })
+        */
+        
+        /*
+        
+        try! session.updateApplicationContext(["blah\(self.count)":"\(self.count)"])
+        self.count++;
+        //try! session.updateApplicationContext(["blah":"11"])
+        */
+        return nil
     }
     
 }
