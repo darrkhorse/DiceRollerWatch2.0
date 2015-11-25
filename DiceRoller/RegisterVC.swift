@@ -1,8 +1,8 @@
 //
-//  RegisterVCViewController.swift
+//  RegisterVC.swift
 //  DiceRoller
 //
-//  Created by Hinck, Johann A on 11/22/15.
+//  Created by Michael Litman on 11/20/15.
 //  Copyright © 2015 awesomefat. All rights reserved.
 //
 
@@ -12,6 +12,7 @@ import Parse
 class RegisterVC: UIViewController
 {
     
+    @IBOutlet weak var theSpinner: UIActivityIndicatorView!
     @IBOutlet weak var usernameTF: UITextField!
     
     @IBOutlet weak var passwordTF: UITextField!
@@ -56,49 +57,36 @@ class RegisterVC: UIViewController
         if(message.characters.count != 0)
         {
             //there was a problem
-            let av = UIAlertController(title: "Error", message: message, preferredStyle: UIAlertControllerStyle.Alert)
-            self.presentViewController(av, animated: true, completion: { () -> Void in
-                let delay = 2 * Double(NSEC_PER_SEC)
-                let time = dispatch_time(DISPATCH_TIME_NOW, Int64(delay))
-                dispatch_after(time, dispatch_get_main_queue(), { () -> Void in
-                    self.dismissViewControllerAnimated(true, completion: nil)
-                })
-            })
+            PhoneCore.showAlert("Register Error", message: message, presentingViewController: self, onScreenDelay: 2)
         }
         else
         {
+            //register the user
+            let user = PFUser()
+            user.username = self.usernameTF.text
+            user.password = self.passwordTF.text
+            user.email = self.emailTF.text
             
-                let user = PFUser()
-                user.username = self.usernameTF.text
-                user.password = self.passwordTF.text
-                user.email = self.emailTF.text
-                // other fields can be set just like with PFObject
-                
-                
-                user.signUpInBackgroundWithBlock
+            //non blocking asyc call
+            self.theSpinner.startAnimating()
+            
+            user.signUpInBackgroundWithBlock({ (success: Bool, error: NSError?) -> Void in
+                if(success)
                 {
-                    (succeeded: Bool, error: NSError?) -> Void in
-                    if let error = error
-                    {
-                        let errorString = error.userInfo["Error: Username or email is already taken"] as? NSString
-                        // Show the errorString somewhere and let the user try again.
-                        let av1 = UIAlertController(title: "Error", message: "\(errorString)", preferredStyle: UIAlertControllerStyle.Alert)
-                        self.presentViewController(av1, animated: true, completion: { () -> Void in
-                            let delay = 2 * Double(NSEC_PER_SEC)
-                            let time = dispatch_time(DISPATCH_TIME_NOW, Int64(delay))
-                            dispatch_after(time, dispatch_get_main_queue(), { () -> Void in
-                                self.dismissViewControllerAnimated(true, completion: nil)
-                            })
-                        })
-                    }
-                    else
-                    {
-                        self.dismissViewControllerAnimated(true, completion: nil)
-                    }
+                    //user is registered, do what now?
+                    self.theSpinner.stopAnimating()
+                    self.dismissViewControllerAnimated(true, completion: nil)
                 }
-            }
+                else
+                {
+                    //there was a problem
+                    print(error?.userInfo["error"])
+                }
+            })
+            
+            
         }
-    
+    }
     
     @IBAction func cancelButtonPressed(sender: AnyObject)
     {

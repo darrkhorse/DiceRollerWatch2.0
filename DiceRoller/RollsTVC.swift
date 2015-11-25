@@ -2,14 +2,6 @@
 //  RollsTVC.swift
 //  DiceRoller
 //
-//  Created by Hinck, Johann A on 11/22/15.
-//  Copyright © 2015 awesomefat. All rights reserved.
-//
-
-//
-//  RollsTVC.swift
-//  DiceRoller
-//
 //  Created by Michael Litman on 11/16/15.
 //  Copyright © 2015 awesomefat. All rights reserved.
 //

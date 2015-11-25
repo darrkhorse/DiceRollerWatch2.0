@@ -6,6 +6,14 @@
 //  Copyright © 2015 awesomefat. All rights reserved.
 //
 
+//
+//  AppDelegate.swift
+//  DiceRoller
+//
+//  Created by Michael Litman on 9/25/15.
+//  Copyright © 2015 awesomefat. All rights reserved.
+//
+
 import UIKit
 import Parse
 

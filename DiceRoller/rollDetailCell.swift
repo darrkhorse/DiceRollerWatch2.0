@@ -2,7 +2,7 @@
 //  rollDetailCell.swift
 //  DiceRoller
 //
-//  Created by Hinck, Johann A on 11/22/15.
+//  Created by Michael Litman on 11/13/15.
 //  Copyright © 2015 awesomefat. All rights reserved.
 //
 

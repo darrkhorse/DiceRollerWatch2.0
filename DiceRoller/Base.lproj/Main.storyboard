@@ -18,6 +18,23 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Pwp-XK-3T4">
+                                <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                                <items>
+                                    <navigationItem title="RegisterVC" id="kbw-UT-UOj">
+                                        <barButtonItem key="leftBarButtonItem" title="cancel" id="AQx-Rb-aB4">
+                                            <connections>
+                                                <action selector="cancelButtonPressed:" destination="kbz-rk-oW2" id="Pck-Ka-ECH"/>
+                                            </connections>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" title="create" id="uTJ-EZ-zNN">
+                                            <connections>
+                                                <action selector="createButtonPressed:" destination="kbz-rk-oW2" id="CYH-wu-dm0"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="username" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IeT-AI-g5T">
                                 <rect key="frame" x="20" y="80" width="335" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -36,23 +53,49 @@
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="email" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vvf-FL-qMN">
                                 <rect key="frame" x="20" y="219" width="335" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
                             </textField>
-                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Pwp-XK-3T4">
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="Lv2-sc-IYX">
+                                <rect key="frame" x="169" y="256" width="37" height="37"/>
+                            </activityIndicatorView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="confirmPasswordTF" destination="1q8-on-Fvj" id="P6X-7V-j6e"/>
+                        <outlet property="emailTF" destination="vvf-FL-qMN" id="988-KX-Ppp"/>
+                        <outlet property="passwordTF" destination="26Q-A2-xCA" id="esY-Yy-UcF"/>
+                        <outlet property="theSpinner" destination="Lv2-sc-IYX" id="rFX-gW-OMp"/>
+                        <outlet property="usernameTF" destination="IeT-AI-g5T" id="vX1-Fo-MD7"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9o4-Q2-ti2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-306.5" y="-381.5"/>
+        </scene>
+        <!--User HomepageVC-->
+        <scene sceneID="L9Y-br-j9C">
+            <objects>
+                <viewController storyboardIdentifier="UserHomepageVC" id="CmU-wn-Owa" customClass="UserHomepageVC" customModule="DiceRoller" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="inr-ih-2tt"/>
+                        <viewControllerLayoutGuide type="bottom" id="gVJ-ai-jVZ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="rC4-oW-vvW">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="user logged in" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JUn-h0-2rn">
+                                <rect key="frame" x="31" y="109" width="301" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3gB-iy-RaZ">
                                 <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                                 <items>
-                                    <navigationItem title="RegisterVC" id="kbw-UT-UOj">
-                                        <barButtonItem key="leftBarButtonItem" title="cancel" id="AQx-Rb-aB4">
-                                            <connections>
-                                                <action selector="cancelButtonPressed:" destination="kbz-rk-oW2" id="Pck-Ka-ECH"/>
-                                            </connections>
-                                        </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" title="create" id="uTJ-EZ-zNN">
-                                            <connections>
-                                                <action selector="createButtonPressed:" destination="kbz-rk-oW2" id="CYH-wu-dm0"/>
-                                            </connections>
-                                        </barButtonItem>
-                                    </navigationItem>
+                                    <navigationItem title="UserHomepageVC" id="btg-99-hWh"/>
                                 </items>
                             </navigationBar>
                         </subviews>
@@ -60,15 +103,12 @@
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
-                        <outlet property="confirmPasswordTF" destination="1q8-on-Fvj" id="P6X-7V-j6e"/>
-                        <outlet property="emailTF" destination="vvf-FL-qMN" id="988-KX-Ppp"/>
-                        <outlet property="passwordTF" destination="26Q-A2-xCA" id="esY-Yy-UcF"/>
-                        <outlet property="usernameTF" destination="IeT-AI-g5T" id="vX1-Fo-MD7"/>
+                        <outlet property="userID" destination="JUn-h0-2rn" id="UCf-hj-wCx"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="9o4-Q2-ti2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Uu2-dg-Hb0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-306.5" y="-381.5"/>
+            <point key="canvasLocation" x="115.5" y="-381.5"/>
         </scene>
         <!--LoginVC-->
         <scene sceneID="i71-J1-VSX">
@@ -127,7 +167,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nUK-3D-bzb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-306.5" y="387.5"/>
+            <point key="canvasLocation" x="-306.5" y="327.5"/>
         </scene>
         <!--MainTVC-->
         <scene sceneID="tne-QT-ifu">
@@ -248,7 +288,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="121.5" y="327.5"/>
+            <point key="canvasLocation" x="124.5" y="327.5"/>
         </scene>
         <!--RollsTVC-->
         <scene sceneID="Zwf-54-575">
