@@ -50,6 +50,8 @@
 		C3470DA71C02C1F300BAFA74 /* RollsTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3470DA61C02C1F300BAFA74 /* RollsTVC.swift */; settings = {ASSET_TAGS = (); }; };
 		C3470DA91C02C2D300BAFA74 /* RegisterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3470DA81C02C2D300BAFA74 /* RegisterVC.swift */; settings = {ASSET_TAGS = (); }; };
 		C3470DAB1C02C35D00BAFA74 /* rollDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3470DAA1C02C35D00BAFA74 /* rollDetailCell.swift */; settings = {ASSET_TAGS = (); }; };
+		C39C09911C1E67E6008CF982 /* GridCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C39C09901C1E67E6008CF982 /* GridCVC.swift */; settings = {ASSET_TAGS = (); }; };
+		C39C09931C1E6967008CF982 /* CustomCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C39C09921C1E6967008CF982 /* CustomCVCell.swift */; settings = {ASSET_TAGS = (); }; };
 		C3D081E01C056F3F00566F58 /* UserHomepageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3D081DF1C056F3F00566F58 /* UserHomepageVC.swift */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
@@ -139,6 +141,8 @@
 		C3470DA61C02C1F300BAFA74 /* RollsTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RollsTVC.swift; sourceTree = "<group>"; };
 		C3470DA81C02C2D300BAFA74 /* RegisterVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterVC.swift; sourceTree = "<group>"; };
 		C3470DAA1C02C35D00BAFA74 /* rollDetailCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = rollDetailCell.swift; sourceTree = "<group>"; };
+		C39C09901C1E67E6008CF982 /* GridCVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GridCVC.swift; sourceTree = "<group>"; };
+		C39C09921C1E6967008CF982 /* CustomCVCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCVCell.swift; sourceTree = "<group>"; };
 		C3D081DF1C056F3F00566F58 /* UserHomepageVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserHomepageVC.swift; sourceTree = "<group>"; };
 		C6096FC9C7393A9C6F6EA08C /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -269,6 +273,8 @@
 				C3470DA81C02C2D300BAFA74 /* RegisterVC.swift */,
 				C3470DAA1C02C35D00BAFA74 /* rollDetailCell.swift */,
 				C3D081DF1C056F3F00566F58 /* UserHomepageVC.swift */,
+				C39C09901C1E67E6008CF982 /* GridCVC.swift */,
+				C39C09921C1E6967008CF982 /* CustomCVCell.swift */,
 			);
 			path = DiceRoller;
 			sourceTree = "<group>";
@@ -514,6 +520,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C39C09911C1E67E6008CF982 /* GridCVC.swift in Sources */,
 				68A764631BB5D9260007B18A /* ViewController.swift in Sources */,
 				C3470DA71C02C1F300BAFA74 /* RollsTVC.swift in Sources */,
 				68A764611BB5D9260007B18A /* AppDelegate.swift in Sources */,
@@ -523,6 +530,7 @@
 				C3470DA91C02C2D300BAFA74 /* RegisterVC.swift in Sources */,
 				C3D081E01C056F3F00566F58 /* UserHomepageVC.swift in Sources */,
 				C3470D9D1C02BAC200BAFA74 /* LoginVC.swift in Sources */,
+				C39C09931C1E6967008CF982 /* CustomCVCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
